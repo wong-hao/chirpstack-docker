@@ -2,12 +2,14 @@ version: "3"
 
 services:
   chirpstack-network-server:
-    image: chirpstack/chirpstack-network-server:3
+    image: chirpstack/chirpstack-network-server:3.6.0
+    restart: always
     volumes:
       - ./configuration/chirpstack-network-server:/etc/chirpstack-network-server
 
   chirpstack-application-server:
-    image: chirpstack/chirpstack-application-server:3
+    image: chirpstack/chirpstack-application-server:latest
+    restart: always
     ports:
       - 8080:8080
     volumes:
@@ -15,13 +17,15 @@ services:
 
   chirpstack-gateway-bridge:
     image: chirpstack/chirpstack-gateway-bridge:3
+    restart: always
     ports:
-      - 1700:1700/udp
+      - 1701:1701/udp
     volumes:
       - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
 
   chirpstack-geolocation-server:
     image: chirpstack/chirpstack-geolocation-server:3
+    restart: always
     volumes:
       - ./configuration/chirpstack-geolocation-server:/etc/chirpstack-geolocation-server
 
@@ -36,9 +40,12 @@ services:
     volumes:
       - redisdata:/data
 
-  mosquitto:
-    image: eclipse-mosquitto
+  rabbitmq:
+    image: rabbitmq:3-alpine
+    volumes:
+      - ./configuration/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
     ports:
+      - 15672:15672
       - 1883:1883
 
 volumes:

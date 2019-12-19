@@ -43,8 +43,11 @@ name="EU_863_870"
   min_dr=0
   max_dr=5
 
-[network_server.gateway.backend.mqtt]
-server="tcp://mosquitto:1883"
+[network_server.gateway.backend]
+type="amqp"
+
+  [network_server.gateway.backend.amqp]
+  url="amqp://guest:guest@rabbitmq:5672"
 
 [join_server.default]
 server="http://chirpstack-application-server:8003"
