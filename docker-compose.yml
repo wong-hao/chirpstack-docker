@@ -84,7 +84,7 @@ services:
       - DOCKER_INFLUXDB_INIT_RETENTION=1w
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-auth-token
     volumes:
-      - $PWD/influx/data:/var/lib/influxdb2
+      - influxdbdata:/var/lib/influxdb2
       - $PWD/influx/config:/etc/influxdb2
     ports:
       - 8006:8006
@@ -161,6 +161,7 @@ services:
 
 volumes:
   rabbitmqdata:
+  influxdbdata:
   postgresqldata:
   grafana-storage:
   redisdata:
