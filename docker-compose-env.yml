@@ -43,7 +43,7 @@ services:
     ports:
       - 1700:1700/udp
     environment:
-      - BACKEND__SEMTECH_UDP__SKIP_CRC_CHECK=true
+      - BACKEND__SEMTECH_UDP__SKIP_CRC_CHECK=false
       - INTEGRATION__marshaler=json
       - INTEGRATION__MQTT__AUTH__GENERIC__SERVERS=tcp://rabbitmq:1883
       - INTEGRATION__MQTT__AUTH__GENERIC__USERNAME=admin
