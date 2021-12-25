@@ -36,6 +36,7 @@ services:
       - APPLICATION_SERVER__INTEGRATION__MQTT__SERVER=tcp://rabbitmq:1883
       - APPLICATION_SERVER__API__bind=chirpstack-application-server:8001
       - APPLICATION_SERVER__API__PUBLIC_HOST=chirpstack-application-server:8001
+      - APPLICATION_SERVER__EXTERNAL_API__BIND=0.0.0.0:8080
       - APPLICATION_SERVER__EXTERNAL_API__JWT_SECRET=verysecret
       - JOIN_SERVER__BIND=chirpstack-application-server:8003
     ports:
