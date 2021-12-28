@@ -72,8 +72,8 @@ services:
       - DOCKER_INFLUXDB_INIT_RETENTION=1w
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-auth-token
     volumes:
-      - $PWD/influx/data:/var/lib/influxdb2 #influxdb2的data采用相对挂载会在长期使用后出现error
-      - $PWD/influx/config:/etc/influxdb2
+      - $PWD/influxdb2/data:/var/lib/influxdb2 #influxdb2的data采用相对挂载会在长期使用后出现error
+      - $PWD/influxdb2/config:/etc/influxdb2
     ports:
       - 8006:8006
       - 2003:2003
