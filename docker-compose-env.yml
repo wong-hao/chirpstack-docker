@@ -11,7 +11,7 @@ services:
       - NETWORK_SERVER__NETWORK_SETTINGS__DISABLE_MAC_COMMANDS=true
       - NETWORK_SERVER__NETWORK_SETTINGS__DISABLE_ADR=true
       - NETWORK_SERVER__NETWORK_SETTINGS__ENABLED_UPLINK_CHANNELS=80,81,82,83,84,85,86,87
-      - NETWORK_SERVER__API__BIND=chirpstack-network-server:8000
+      - NETWORK_SERVER__API__BIND=0.0.0.0:8000
       - NETWORK_SERVER__GATEWAY__BACKEND__MQTT__SERVER=tcp://rabbitmq:1883
       - NETWORK_SERVER__GATEWAY__BACKEND__AMQP__SERVER=amqp://guest:guest@rabbitmq:5672
       - NETWORK_SERVER__GATEWAY__BACKEND__AMQP__EVENT_QUEUE_NAME=gateway-events
@@ -22,6 +22,8 @@ services:
       - postgresql
         # - mosquitto
       - rabbitmq
+    ports:
+      - 8000:8000
 
   chirpstack-application-server:
     image: chirpstack/chirpstack-application-server:3
