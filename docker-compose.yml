@@ -26,6 +26,8 @@ services:
       - postgresql
         #   - mosquitto
       - rabbitmq
+    ports:
+      - 8000:8000
     restart: always
 
   chirpstack-application-server:
