@@ -7,6 +7,7 @@ services:
       - POSTGRESQL__DSN=postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable
       - REDIS__URL=redis://redis:6379
       - NETWORK_SERVER__NET_ID=000000
+      - NETWORK_SERVER__DEVICE_SESSION_TTL=8760h0m0s
       - NETWORK_SERVER__BAND__NAME=CN470
       - NETWORK_SERVER__NETWORK_SETTINGS__DISABLE_MAC_COMMANDS=true
       - NETWORK_SERVER__NETWORK_SETTINGS__DISABLE_ADR=true
