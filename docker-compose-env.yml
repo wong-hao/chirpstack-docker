@@ -2,7 +2,7 @@ version: "3"
 
 services:
   chirpstack-network-server:
-    image: chirpstack/chirpstack-network-server:3
+    image: chirpstack/chirpstack-network-server:3.16.6
     environment:
       - POSTGRESQL__DSN=postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable
       - REDIS__URL=redis://redis:6379
@@ -27,7 +27,7 @@ services:
       - 8000:8000
 
   chirpstack-application-server:
-    image: chirpstack/chirpstack-application-server:3
+    image: chirpstack/chirpstack-application-server:3.17.9
     ports:
       - 8080:8080
     environment:
@@ -43,7 +43,7 @@ services:
       - chirpstack-network-server
 
   chirpstack-gateway-bridge:
-    image: chirpstack/chirpstack-gateway-bridge:3
+    image: chirpstack/chirpstack-gateway-bridge:3.14.6
     ports:
       - 1700:1700/udp
     environment:
@@ -65,7 +65,7 @@ services:
       - postgresqldata:/var/lib/postgresql/data
 
   influxdb:
-    image: influxdb:latest
+    image: influxdb:2.6
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=my-user
@@ -84,7 +84,7 @@ services:
       - 8083:8083
       
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:9.3.6
     volumes:
     - grafana-storage:/var/lib/grafana
   environment:
@@ -118,7 +118,7 @@ services:
   #- 1883:1883
 
   rabbitmq:
-    image: rabbitmq:management
+    image: rabbitmq:3.11.8-management
     ports:
       - 1883:1883
       - 15672:15672
@@ -131,7 +131,7 @@ services:
       - $PWD/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
 
   frps:
-    image: snowdreamtech/frps
+    image: snowdreamtech/frps:0.46.1
     volumes:
       - $PWD/frp/frps/frps.ini:/etc/frp/frps.ini
     network_mode: "host"
