@@ -154,7 +154,7 @@ services:
     restart: always
 
   frps:
-    image: snowdreamtech/frps:0.46.1
+    image: snowdreamtech/frps:0.47.0
     container_name: frps
     volumes:
       - $PWD/frp/frps/frps.ini:/etc/frp/frps.ini
