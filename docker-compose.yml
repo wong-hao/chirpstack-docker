@@ -74,7 +74,7 @@ services:
 
 
   influxdb:
-    image: influxdb:2.7
+    image: influxdb:2.7.1
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=my-user
@@ -94,7 +94,7 @@ services:
     restart: always
 
   grafana:
-    image: grafana/grafana:9.4.7
+    image: grafana/grafana:9.4.9
     container_name: grafana
     volumes:
       - grafana-storage:/var/lib/grafana
@@ -136,7 +136,7 @@ services:
   # restart: always
 
   rabbitmq:
-    image: rabbitmq:3.11.13-management
+    image: rabbitmq:3.11.14-management
     container_name: some-rabbit
     hostname: my-rabbit
     ports:
@@ -152,7 +152,7 @@ services:
     restart: always
 
   frps:
-    image: snowdreamtech/frps:0.47.0
+    image: snowdreamtech/frps:0.48.0
     container_name: frps
     volumes:
       - $PWD/frp/frps/frps.ini:/etc/frp/frps.ini
